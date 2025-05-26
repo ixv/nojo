@@ -1,0 +1,133 @@
+[package]
+name = "nojo"
+version = "0.1.0"
+edition = "2021"
+
+[[bin]]
+name = "nojo"
+path = "src/main.rs"
+
+[workspace]
+members = [
+    "crates/nockapp",
+    "crates/nockvm/rust/nockvm",
+    "crates/nockvm/rust/nockvm_crypto",
+    "crates/nockvm/rust/nockvm_macros",
+    "crates/nockvm/rust/ibig",
+    "crates/nockvm/rust/murmur3",
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+
+[workspace.dependencies]
+# Core workspace crates
+nockapp = { path = "crates/nockapp" }
+nockvm = { path = "crates/nockvm/rust/nockvm" }
+nockvm_crypto = { path = "crates/nockvm/rust/nockvm_crypto" }
+nockvm_macros = { path = "crates/nockvm/rust/nockvm_macros" }
+ibig = { path = "crates/nockvm/rust/ibig" }
+murmur3 = { path = "crates/nockvm/rust/murmur3" }
+
+# External dependencies from nockchain workspace
+json = "0.12.4"
+lazy_static = "1.4.0"
+libc = "0.2.171"
+memmap2 = "^0.9.5"
+num-derive = "0.4.2"
+signal-hook = "0.3"
+signal-hook-tokio = "0.3.1"
+static_assertions = "1.1.0"
+
+# Sword crypto dependencies
+curve25519-dalek = { version = "4.1.1", default-features = false }
+ed25519-dalek = { version = "2.1.0", default-features = false }
+x25519-dalek = { version = "2.0.0", features = ["static_secrets"], default-features = false }
+aes = { version = "0.8.3", default-features = false }
+aes-siv = { version = "0.7.0", default-features = false }
+sha1 = { version = "0.10.6", default-features = false }
+sha2 = { version = "0.10.8", default-features = false }
+
+# nockapp-specific workspace dependencies
+anyhow = "1.0"
+async-trait = "0.1"
+axum = "0.8.1"
+bincode = "2.0.0-rc.3"
+blake3 = { version = "1.5.1", features = ["serde"] }
+bs58 = "0.5.1"
+byteorder = "1.5.0"
+crossterm = "0.28.1"
+chrono = "0.4.40"
+intmap = "3.1.0"
+opentelemetry = { version = "0.27.1", features = ["trace", "logs", "metrics", "internal-logs"] }
+opentelemetry-otlp = { version = "0.27.0", features = ["tonic", "http-proto", "reqwest-client"] }
+opentelemetry_sdk = { version = "0.27.1", features = ["rt-tokio"] }
+serde_bytes = { version = "0.11.15", features = ["alloc"] }
+tempfile = "3.3"
+termimad = "0.31.0"
+tonic = "0.12.3"
+tracing-opentelemetry = { version = "0.28.0", features = ["metrics"] }
+tracing-test = "0.2.5"
+yaque = "0.6.6"
+
+# External dependencies
+arrayref = "0.3.7"
+argon2 = "0.5.3"
+bardecoder = "0.5.0"
+bitcoincore-rpc = "0.19.0"
+bitvec = "1.0.1"
+bytes = "1.5.0"
+cfg-if = "1.0.0"
+clap = "4.4.4"
+num-traits = "0.2"
+pin-project-lite = "0.2.16"
+criterion = { git = "https://github.com/vlovich/criterion.rs.git", rev = "9b485aece85a3546126b06cc25d33e14aba829b3", features = ["html_reports"] }
+dirs = "6.0.0"
+either = "1.9.0"
+equix = "0.2.2"
+futures = "0.3.31"
+getrandom = { version = "0.2.15", features = ["std"] }
+gnort = "0.1.1"
+hex-literal = "1.0.0"
+hickory-resolver = { version = "0.25.0-alpha.4", features = ["system-config"] }
+hickory-proto = "0.25.0-alpha.4"
+image = "0.24.7"
+libp2p = { git = "https://github.com/libp2p/rust-libp2p.git", rev = "da0017ee887a868e231ed78c7de892779c17800d" }
+qrcode = "0.13"
+quickcheck = "1.0.3"
+quickcheck_macros = "1.0"
+rand = "0.8.5"
+ratatui = "0.29.0"
+rayon = "1.8.0"
+reqwest = { version = "0.12", default-features = false, features = ["rustls-tls", "http2", "charset"] }
+serde = "1.0.217"
+serde_json = "1.0.104"
+sha3 = "0.10.8"
+slotmap = "1.0.7"
+smallvec = "1.13.2"
+termcolor = "1.4"
+testcontainers = { git = "https://github.com/bitemyapp/testcontainers-rs.git", rev = "54851fd9faf9b9cded9d681b46f87c056880d870" }
+thiserror = "2.0.11"
+tokio = { version = "1.32", features = ["fs", "io-util", "macros", "net", "rt-multi-thread", "rt", "signal"] }
+tokio-util = "0.7.11"
+tracing = "0.1.41"
+tracing-subscriber = { version = "0.3.18", features = ["ansi", "env-filter", "registry"] }
+vergen = "8.3.2"
+void = "1.0.2"
+num_cpus = "1.16.0"
+
+[dependencies]
+# Use workspace dependencies
+nockapp.workspace = true
+nockvm.workspace = true  
+nockvm_macros.workspace = true
+tokio.workspace = true
+tracing.workspace = true
+anyhow.workspace = true
+thiserror.workspace = true
+bytes.workspace = true
+
+
+
+
